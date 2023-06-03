@@ -548,7 +548,7 @@ function selectMany(arr, childrenSelector) {
 function getElementByIndexes(arr, indexes) {
   return indexes.map((index) => arr[index]);
 }
-console.log(getElementByIndexes([[1, 2], [3, 4], [5, 6]], [0,0]));
+// console.log(getElementByIndexes([[1, 2], [3, 4], [5, 6]], [0, 0]));
 
 /**
  * Swaps the head and tail of the specified array:
