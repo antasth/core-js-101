@@ -546,9 +546,10 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-  return indexes.map((index) => arr[index]);
+  if (indexes.length === 1) return arr[indexes[0]];
+  const curr = indexes.shift();
+  return getElementByIndexes(arr[curr], indexes);
 }
-// console.log(getElementByIndexes([[1, 2], [3, 4], [5, 6]], [0, 0]));
 
 /**
  * Swaps the head and tail of the specified array:
@@ -568,10 +569,12 @@ function getElementByIndexes(arr, indexes) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const len = arr.length / 2;
+  const left = arr.splice(0, len);
+  const right = arr.splice(-len);
+  return [...right, ...arr, ...left];
 }
-
 
 module.exports = {
   findElement,
